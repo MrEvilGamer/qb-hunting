@@ -118,7 +118,6 @@ local AnimalsInSession = {}
 
 local Positions = {
 	['StartHunting'] = { ['hint'] = '[E] Start Hunting', ['x'] = -1492.86, ['y'] = 4971.34, ['z'] = 63.91 },
-	--['Sell'] = { ['hint'] = '[E] Sell Meat', ['x'] = -66.8, ['y'] = 6237.96, ['z'] = 31.09 },
 	['Sell'] = { ['hint'] = '[E] Sell Meat', ['x'] = 89.95, ['y'] = 6339.76, ['z'] = 31.38 },
 	-- ['SpawnATV'] = { ['hint'] = '[E] Spawn ATV', ['x'] = -1489.8, ['y'] = 4974.8, ['z'] = 63.75 },
 }
