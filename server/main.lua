@@ -26,9 +26,8 @@ AddEventHandler('QBCore:Server:sellhunt', function()
 			
                   local _source = source
                   local xPlayer = QBCore.Functions.GetPlayer(source)
-                  local ItemA = xPlayer.Functions.GetItemByName('meat')
                   local MeatPrice = 20
-                  local MeatQuantity = ItemA.amount
+                  local MeatQuantity = getQuantity('meat')
                   if MeatQuantity > 0  then
                       xPlayer.Functions.AddMoney("cash", MeatQuantity * MeatPrice, "sold-pawn-items")
                          TriggerClientEvent('QBCore:Notify', source, 'you sold to the meat', "success")  
@@ -46,9 +45,8 @@ AddEventHandler('QBCore:Server:sellhunt', function()
 
     local _source = source
     local xPlayer = QBCore.Functions.GetPlayer(source)
-    local ItemB = xPlayer.Functions.GetItemByName('leather')
     local LeatherPrice = 40
-    local LeatherQuantity = ItemB.amount
+    local LeatherQuantity = getQuantity('leather')
     
     if LeatherQuantity > 0 then
         xPlayer.Functions.AddMoney("cash", LeatherQuantity * LeatherPrice, "sold-pawn-items")
@@ -60,3 +58,13 @@ AddEventHandler('QBCore:Server:sellhunt', function()
     end
         
 end)
+
+-- Checks quantity of passed item, if none or nil return 0.
+function getQuantity(item)
+    local player = QBCore.Functions.GetPlayer(source)
+    if item == nil then return print("CRAFTING: An invalid item was passed into GetQuantity") end
+    local quantity = player.Functions.GetItemByName(item)
+    if quantity == nil then quantity = 0 else quantity = quantity.amount end
+
+    return quantity
+end
