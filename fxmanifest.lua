@@ -7,7 +7,7 @@ client_script {
 
 shared_script {
 	'@qb-core/import.lua',
-	'shared/config.lua'
+	'config.lua'
 }
 
 server_script {
