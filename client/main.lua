@@ -10,6 +10,8 @@ local Keys = {
 	["NENTER"] = 201, ["N4"] = 108, ["N5"] = 60, ["N6"] = 107, ["N+"] = 96, ["N-"] = 97, ["N7"] = 117, ["N8"] = 61, ["N9"] = 118
 }
 
+QBCore = exports['qb-core']:GetCoreObject()
+
 CreateThread(function()
 	AddTextEntry("Hunting", "Hunting Spot")
 	for k, v in pairs(Config.Hunting) do
