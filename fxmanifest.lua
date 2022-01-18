@@ -6,10 +6,11 @@ client_script {
 }
 
 shared_script {
-	'@qb-core/import.lua',
 	'config.lua'
 }
 
 server_script {
 	'server/main.lua'
 }
+
+lua54 'yes'
