@@ -10,7 +10,7 @@ local Keys = {
 	["NENTER"] = 201, ["N4"] = 108, ["N5"] = 60, ["N6"] = 107, ["N+"] = 96, ["N-"] = 97, ["N7"] = 117, ["N8"] = 61, ["N9"] = 118
 }
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	AddTextEntry("Hunting", "Hunting Spot")
 	for k, v in pairs(Config.Hunting) do
 		local blip = AddBlipForCoord(v)
@@ -23,7 +23,7 @@ Citizen.CreateThread(function()
 	end
 end)
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	AddTextEntry("Butcher", "Butcher Shop")
 	for k, v in pairs(Config.Butcher) do
 		local blip = AddBlipForCoord(v)
@@ -36,8 +36,7 @@ Citizen.CreateThread(function()
 	end
 end)
 
-RegisterNetEvent("QBCore:Client:OnPlayerLoaded")
-AddEventHandler("QBCore:Client:OnPlayerLoaded", function()
+RegisterNetEvent("QBCore:Client:OnPlayerLoaded", function()
  ScriptLoaded()
 end)
 
@@ -46,9 +45,9 @@ local veh = nil
 
 local cord = {x=-1492.86, y = 4971.34, z = 63.91}
 
-Citizen.CreateThread(function()
+CreateThread(function()
     while true do
-		Citizen.Wait(0)
+		Wait(0)
 local coords = GetEntityCoords(PlayerPedId())
 local distance = Vdist(coords.x, coords.y, coords.z, cord.x, cord.y, cord.z)
 if not OnGoingHuntSession and distance < 5 then
@@ -63,7 +62,7 @@ if not OnGoingHuntSession and distance < 2 then
 	if IsControlJustPressed(0, 38) then
         OnGoingHuntSession = true
 		StartHuntingSession()
-	    Citizen.Wait(0)
+	    Wait(0)
 	end
 end
 
@@ -72,7 +71,7 @@ if OnGoingHuntSession and distance < 2 then
         OnGoingHuntSession = false
         RemoveBlip(AnimalBlip)
         DeleteEntity(Animal)
-	Citizen.Wait(0)
+	Wait(0)
 end
 end
 	end
@@ -80,9 +79,9 @@ end)
 
 local cordsell = {x=89.95, y = 6339.76, z = 31.38}
 
-Citizen.CreateThread(function()
+CreateThread(function()
     while true do
-		Citizen.Wait(0)
+		Wait(0)
 local coords = GetEntityCoords(PlayerPedId())
 local distance = Vdist(coords.x, coords.y, coords.z, cordsell.x, cordsell.y, cordsell.z)
 if distance < 5 then
@@ -93,14 +92,14 @@ end
 if distance < 2 then
     if IsControlJustPressed(0, 38) then
         SellItems()
-	Citizen.Wait(0)
+	Wait(0)
 end
 end
 	end
 end)
 
 function ScriptLoaded()
-	Citizen.Wait(1000)
+	Wait(1000)
 	LoadMarkers()
 end
 
@@ -127,7 +126,7 @@ local HuntCar = nil
 
 function LoadMarkers()
 
-	Citizen.CreateThread(function()
+	CreateThread(function()
 		for k, v in ipairs(Positions) do
 			if k ~= 'SpawnATV' then
 				local StartBlip = AddBlipForCoord(v.x, v.y, v.z)
@@ -177,7 +176,7 @@ function StartHuntingSession()
 		
 		--Animals
 
-		Citizen.CreateThread(function()
+		CreateThread(function()
 
 				
 			for index, value in pairs(AnimalPositions) do
@@ -221,7 +220,7 @@ function StartHuntingSession()
 											SlaughterAnimal(value.id)
 										end
                                     else
-                                    Citizen.Wait(100)
+                                    Wait(100)
                                     QBCore.Functions.Notify("You need to use the knife!")
 									end
 								end
@@ -231,7 +230,7 @@ function StartHuntingSession()
 					end
 				end
 
-				Citizen.Wait(sleep)
+				Wait(sleep)
 
 			end
 				
@@ -244,7 +243,7 @@ function SlaughterAnimal(AnimalId)
 	TaskPlayAnim(PlayerPedId(), "amb@medic@standing@kneel@base" ,"base" ,8.0, -8.0, -1, 1, 0, false, false, false )
 	TaskPlayAnim(PlayerPedId(), "anim@gangops@facility@servers@bodysearch@" ,"player_search" ,8.0, -8.0, -1, 48, 0, false, false, false )
 
-	Citizen.Wait(5000)
+	Wait(5000)
 
 	ClearPedTasksImmediately(PlayerPedId())
 
@@ -264,14 +263,14 @@ end
 function LoadAnimDict(dict)
     while (not HasAnimDictLoaded(dict)) do
         RequestAnimDict(dict)
-        Citizen.Wait(10)
+        Wait(10)
     end    
 end
 
 function LoadModel(model)
     while not HasModelLoaded(model) do
           RequestModel(model)
-          Citizen.Wait(10)
+          Wait(10)
     end
 end
 
