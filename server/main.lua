@@ -1,5 +1,4 @@
-RegisterServerEvent('QBCore:Server:reward')
-AddEventHandler('QBCore:Server:reward', function(Weight)
+RegisterServerEvent('QBCore:Server:reward', function(Weight
     local _source = source
     local xPlayer = QBCore.Functions.GetPlayer(_source)
 
@@ -20,8 +19,7 @@ AddEventHandler('QBCore:Server:reward', function(Weight)
         
 end)
 
-RegisterServerEvent('QBCore:Server:sellhunt')
-AddEventHandler('QBCore:Server:sellhunt', function()
+RegisterServerEvent('QBCore:Server:sellhunt', function()
 
 			
                   local _source = source
@@ -40,8 +38,7 @@ AddEventHandler('QBCore:Server:sellhunt', function()
                   
 end)
 
-RegisterServerEvent('QBCore:Server:sellhunt')
-AddEventHandler('QBCore:Server:sellhunt', function()
+RegisterServerEvent('QBCore:Server:sellhunt', function()
 
     local _source = source
     local xPlayer = QBCore.Functions.GetPlayer(source)
