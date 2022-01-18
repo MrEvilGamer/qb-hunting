@@ -1,3 +1,5 @@
+QBCore = exports['qb-core']:GetCoreObject()
+
 RegisterServerEvent('QBCore:Server:reward', function(Weight
     local _source = source
     local xPlayer = QBCore.Functions.GetPlayer(_source)
