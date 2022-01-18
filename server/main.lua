@@ -37,7 +37,6 @@ RegisterServerEvent('QBCore:Server:sellhunt', function()
 end)
 
 RegisterServerEvent('QBCore:Server:sellhunt', function()
-
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     local LeatherPrice = 40
