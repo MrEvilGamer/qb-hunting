@@ -1,30 +1,30 @@
 QBCore = exports['qb-core']:GetCoreObject()
 
 RegisterServerEvent('QBCore:Server:reward', function(Weight)
-    local _source = source
-    local xPlayer = QBCore.Functions.GetPlayer(_source)
+    local src = source
+    local xPlayer = QBCore.Functions.GetPlayer(src)
 
     if Weight >= 1 then
        xPlayer.Functions.AddItem('meat', 1)
-       TriggerClientEvent('inventory:client:ItemBox', _source, QBCore.Shared.Items['meat'], "add")
+       TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['meat'], "add")
     elseif Weight >= 9 then
         xPlayer.Functions.AddItem('meat', 1)
-       TriggerClientEvent('inventory:client:ItemBox', _source, QBCore.Shared.Items['meat'], "add")
+       TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['meat'], "add")
     elseif Weight >= 15 then
         xPlayer.Functions.AddItem('meat', 1)
-       TriggerClientEvent('inventory:client:ItemBox', _source, QBCore.Shared.Items['meat'], "add")
+       TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['meat'], "add")
     end
 
     
 	xPlayer.Functions.AddItem('leather', math.random(1, 2))
-       TriggerClientEvent('inventory:client:ItemBox', _source, QBCore.Shared.Items['leather'], "add")
+       TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['leather'], "add")
         
 end)
 
 RegisterServerEvent('QBCore:Server:sellhunt', function()
 
 			
-                  local _source = source
+                  local src = source
                   local xPlayer = QBCore.Functions.GetPlayer(source)
                   local MeatPrice = 20
 		  local MeatQuantity = getQuantity('meat')
@@ -42,7 +42,7 @@ end)
 
 RegisterServerEvent('QBCore:Server:sellhunt', function()
 
-    local _source = source
+    local src = source
     local xPlayer = QBCore.Functions.GetPlayer(source)
     local LeatherPrice = 40
     local LeatherQuantity = getQuantity('leather')
